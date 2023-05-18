@@ -1,0 +1,20 @@
+datasets:
+  odom: 'data/input/odom.csv'
+  flaser: 'data/input/flaser.csv'
+
+prob_occ: 0.75
+
+laser:
+  max_range: 7
+  degrees: 181
+
+map:
+  size: [80, 80]
+  resolution: 2
+
+plot:
+  animation_speed: 0.01 # Live plot speed
+  lidar_alpha: 0.4 # Transperancy
+  lidar_color: 'r' # Red
+  robot_color: 'g' # Green
+  plot_output_filename: 'data/output/occupancy_plot.pdf'
