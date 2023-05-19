@@ -1,10 +1,10 @@
 """
 This is a script to process odometry and laser data, and plot the results using an Occupancy Grid map.
 """
-
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+from matplotlib.animation import FuncAnimation
 import logging
 from pathlib import Path
 from src.config_parser import load_config
@@ -75,37 +75,34 @@ def plot_map(config, odometry, laser, map, i):
     :param laser: The laser data array.
     :param map: The OccupancyGrid object to be plotted.
     :param i: The current index in the odometry and laser data arrays.
-
     """
     resolution = config['map']['resolution']
-    filename = config['plot']['plot_output_filename']
-    animation_speed = config['plot']['animation_speed']
-    lidar_color = config['plot']['lidar_color']
-    lidar_alpha = config['plot']['lidar_alpha']
-    robot_color = config['plot']['robot_color']
-
     plt.clf()  # Clear the current figure.
 
     # Create a wedge (half-circle) representing the LIDAR's field of view
-    pos = odometry[i] * resolution  # Compute the robot's position with the resolution taken into account.
+    pos = odometry[i] * resolution # Compute the robot's position with the resolution taken into account.
     theta = odometry[i, 2]  # Robot's heading angle
-    lidar_fov = patches.Wedge(center=(pos[0], pos[1]), r=config["laser"]["max_range"], 
+
+    # Adjust the radius of the wedge according to the resolution
+    wedge_radius = config["laser"]["max_range"] * resolution
+
+    lidar_fov = patches.Wedge(center=(pos[0], pos[1]), r=wedge_radius, 
                               theta1=np.degrees(theta - np.pi/2), 
                               theta2=np.degrees(theta + np.pi/2), 
-                              color=lidar_color, alpha=lidar_alpha)  
+                              color=config['plot']['lidar_color'], alpha=config['plot']['lidar_alpha'])  
     
     # Create a circle representing the robot.
-    rob = patches.Circle((pos[0], pos[1]), resolution, fc=robot_color)  
+    rob = patches.Circle((pos[0], pos[1]), resolution, fc=config['plot']['robot_color'])  
 
     plt.gca().add_patch(lidar_fov)
     plt.gca().add_patch(rob)
 
     # Display the occupancy grid map with a grayscale colormap, origin at the lower left corner.
     plt.imshow(map.fetch_prob_map().T, cmap='gray', origin='lower')
-    plt.pause(animation_speed)  # Pause to update the figure.
+    plt.pause(config['plot']['liveplot_speed'])  # Pause to update the figure.
 
     if i == len(odometry) - 1:  # If it is the last iteration, save the figure.
-        plt.savefig(filename)  # Save the figure to a file.
+        plt.savefig(config['plot']['plot_output_filename'])  # Save the figure to a file.
 
 if __name__ == '__main__':
     main()
