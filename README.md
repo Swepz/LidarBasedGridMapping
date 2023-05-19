@@ -60,5 +60,14 @@ You can modify the config.yaml file to change the behavior of the script. The sc
 * map: Map configuration including size and resolution.
 * plot: Plot configuration including animation_speed, lidar_color, lidar_alpha, robot_color and plot_output_filename.
 
+
+## Dataset
+### Dataset Source
+
+The dataset used in this project originates from the [Robotics 2D-Laser Datasets](http://www2.informatik.uni-freiburg.de/~stachnis/datasets.html) provided by the University of Freiburg. This project specifically uses the 'Orebro' dataset.
+
+The raw log data for the 'Orebro' dataset was kindly provided by Henrik Andreasson, Per Larsson, and Tom Duckett. The dataset format is the 'corrected-log' in the Carmen framework. This rich dataset allows us to demonstrate the functionality and potential applications of our Occupancy Grid Mapping project effectively.
+
+
 ## License
 This project is licensed under the terms of the MIT license. See the [LICENSE](LICENCE) file for the full text of the license.
