@@ -1,0 +1,144 @@
+\doxysection{src.\+occupancy.\+Occupancy\+Grid Class Reference}
+\hypertarget{classsrc_1_1occupancy_1_1_occupancy_grid}{}\label{classsrc_1_1occupancy_1_1_occupancy_grid}\index{src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsrc_1_1occupancy_1_1_occupancy_grid_a18210246897e1677e1514b691beabf85}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, map\+\_\+size, \mbox{\hyperlink{classsrc_1_1occupancy_1_1_occupancy_grid_ac695a9ab83d6096c6d1baad037f21d44}{res}}, probability)
+\item 
+\mbox{\hyperlink{classsrc_1_1occupancy_1_1_occupancy_grid_a41ec48b23aae1f41b43f72abb7198ec6}{fetch\+\_\+prob\+\_\+map}} (self)
+\item 
+\mbox{\hyperlink{classsrc_1_1occupancy_1_1_occupancy_grid_aeeffbb52c3ff8a3cac350cfba9c801e6}{add\+\_\+prob}} (self, occupied)
+\item 
+\mbox{\hyperlink{classsrc_1_1occupancy_1_1_occupancy_grid_a7c9509fb57d1f7daf13b17a405bd56ee}{cells\+\_\+between\+\_\+points}} (self, x0, y0, x1, y1)
+\item 
+\mbox{\hyperlink{classsrc_1_1occupancy_1_1_occupancy_grid_a8cd4dac92cd00f04db452bebfdbe1ccb}{laser\+\_\+sweep}} (self, xi, zi)
+\item 
+\mbox{\hyperlink{classsrc_1_1occupancy_1_1_occupancy_grid_ad7f659d8124e6650d70ff68e10804ae7}{check\+\_\+cells}} (self, xi, zi)
+\item 
+\mbox{\hyperlink{classsrc_1_1occupancy_1_1_occupancy_grid_a7c7d243d0975df5cfaabe9ccfd2e8125}{update}} (self, xi, zi)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsrc_1_1occupancy_1_1_occupancy_grid_ac695a9ab83d6096c6d1baad037f21d44}{res}}
+\item 
+\mbox{\hyperlink{classsrc_1_1occupancy_1_1_occupancy_grid_a451ff43f1ae3a9a9b13309dc7698d47d}{prob}}
+\item 
+\mbox{\hyperlink{classsrc_1_1occupancy_1_1_occupancy_grid_a607967c9af5f45636fbdf997cd5deb07}{log\+\_\+prob\+\_\+map}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Represents an occupancy grid for robotic mapping.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classsrc_1_1occupancy_1_1_occupancy_grid_a18210246897e1677e1514b691beabf85}\label{classsrc_1_1occupancy_1_1_occupancy_grid_a18210246897e1677e1514b691beabf85} 
+\index{src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily src.\+occupancy.\+Occupancy\+Grid.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{map\+\_\+size,  }\item[{}]{res,  }\item[{}]{probability }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes the occupancy grid.
+
+:param map_size: A 2-element list specifying the size of the map.
+:param res: The map resolution (size of each grid cell).
+:param probability: The initial probability for each cell.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsrc_1_1occupancy_1_1_occupancy_grid_aeeffbb52c3ff8a3cac350cfba9c801e6}\label{classsrc_1_1occupancy_1_1_occupancy_grid_aeeffbb52c3ff8a3cac350cfba9c801e6} 
+\index{src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}!add\_prob@{add\_prob}}
+\index{add\_prob@{add\_prob}!src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}}
+\doxysubsubsection{\texorpdfstring{add\_prob()}{add\_prob()}}
+{\footnotesize\ttfamily src.\+occupancy.\+Occupancy\+Grid.\+add\+\_\+prob (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{occupied }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the log odds for a cell being occupied or free.
+
+:param occupied: A boolean indicating if the cell is occupied (True) or free (False).
+:return: Log odds of the cell being occupied or free.
+\end{DoxyVerb}
+ \Hypertarget{classsrc_1_1occupancy_1_1_occupancy_grid_a7c9509fb57d1f7daf13b17a405bd56ee}\label{classsrc_1_1occupancy_1_1_occupancy_grid_a7c9509fb57d1f7daf13b17a405bd56ee} 
+\index{src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}!cells\_between\_points@{cells\_between\_points}}
+\index{cells\_between\_points@{cells\_between\_points}!src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}}
+\doxysubsubsection{\texorpdfstring{cells\_between\_points()}{cells\_between\_points()}}
+{\footnotesize\ttfamily src.\+occupancy.\+Occupancy\+Grid.\+cells\+\_\+between\+\_\+points (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{x0,  }\item[{}]{y0,  }\item[{}]{x1,  }\item[{}]{y1 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the grid cells between two points.
+
+:param x0, y0: The coordinates of the first point.
+:param x1, y1: The coordinates of the second point.
+:return: A list of grid cells between the two points.
+\end{DoxyVerb}
+ \Hypertarget{classsrc_1_1occupancy_1_1_occupancy_grid_ad7f659d8124e6650d70ff68e10804ae7}\label{classsrc_1_1occupancy_1_1_occupancy_grid_ad7f659d8124e6650d70ff68e10804ae7} 
+\index{src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}!check\_cells@{check\_cells}}
+\index{check\_cells@{check\_cells}!src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}}
+\doxysubsubsection{\texorpdfstring{check\_cells()}{check\_cells()}}
+{\footnotesize\ttfamily src.\+occupancy.\+Occupancy\+Grid.\+check\+\_\+cells (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{xi,  }\item[{}]{zi }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Checks if the cells are occupied or free based on the laser sweep.
+
+:param xi: The current pose of the robot.
+:param zi: The laser readings.
+:return: A list of occupied cells and a list of free cells.
+\end{DoxyVerb}
+ \Hypertarget{classsrc_1_1occupancy_1_1_occupancy_grid_a41ec48b23aae1f41b43f72abb7198ec6}\label{classsrc_1_1occupancy_1_1_occupancy_grid_a41ec48b23aae1f41b43f72abb7198ec6} 
+\index{src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}!fetch\_prob\_map@{fetch\_prob\_map}}
+\index{fetch\_prob\_map@{fetch\_prob\_map}!src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}}
+\doxysubsubsection{\texorpdfstring{fetch\_prob\_map()}{fetch\_prob\_map()}}
+{\footnotesize\ttfamily src.\+occupancy.\+Occupancy\+Grid.\+fetch\+\_\+prob\+\_\+map (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the current map represented as probabilities.
+
+:return: A 2D numpy array of probabilities.
+\end{DoxyVerb}
+ \Hypertarget{classsrc_1_1occupancy_1_1_occupancy_grid_a8cd4dac92cd00f04db452bebfdbe1ccb}\label{classsrc_1_1occupancy_1_1_occupancy_grid_a8cd4dac92cd00f04db452bebfdbe1ccb} 
+\index{src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}!laser\_sweep@{laser\_sweep}}
+\index{laser\_sweep@{laser\_sweep}!src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}}
+\doxysubsubsection{\texorpdfstring{laser\_sweep()}{laser\_sweep()}}
+{\footnotesize\ttfamily src.\+occupancy.\+Occupancy\+Grid.\+laser\+\_\+sweep (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{xi,  }\item[{}]{zi }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Performs a laser sweep around the current robot pose.
+
+:param xi: The current pose of the robot.
+:param zi: The laser readings.
+:return: A list of points where the laser hits.
+\end{DoxyVerb}
+ \Hypertarget{classsrc_1_1occupancy_1_1_occupancy_grid_a7c7d243d0975df5cfaabe9ccfd2e8125}\label{classsrc_1_1occupancy_1_1_occupancy_grid_a7c7d243d0975df5cfaabe9ccfd2e8125} 
+\index{src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}!update@{update}}
+\index{update@{update}!src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily src.\+occupancy.\+Occupancy\+Grid.\+update (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{xi,  }\item[{}]{zi }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Updates the map based on new laser readings.
+
+:param xi: The current pose of the robot.
+:param zi: The laser readings.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classsrc_1_1occupancy_1_1_occupancy_grid_a607967c9af5f45636fbdf997cd5deb07}\label{classsrc_1_1occupancy_1_1_occupancy_grid_a607967c9af5f45636fbdf997cd5deb07} 
+\index{src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}!log\_prob\_map@{log\_prob\_map}}
+\index{log\_prob\_map@{log\_prob\_map}!src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}}
+\doxysubsubsection{\texorpdfstring{log\_prob\_map}{log\_prob\_map}}
+{\footnotesize\ttfamily src.\+occupancy.\+Occupancy\+Grid.\+log\+\_\+prob\+\_\+map}
+
+\Hypertarget{classsrc_1_1occupancy_1_1_occupancy_grid_a451ff43f1ae3a9a9b13309dc7698d47d}\label{classsrc_1_1occupancy_1_1_occupancy_grid_a451ff43f1ae3a9a9b13309dc7698d47d} 
+\index{src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}!prob@{prob}}
+\index{prob@{prob}!src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}}
+\doxysubsubsection{\texorpdfstring{prob}{prob}}
+{\footnotesize\ttfamily src.\+occupancy.\+Occupancy\+Grid.\+prob}
+
+\Hypertarget{classsrc_1_1occupancy_1_1_occupancy_grid_ac695a9ab83d6096c6d1baad037f21d44}\label{classsrc_1_1occupancy_1_1_occupancy_grid_ac695a9ab83d6096c6d1baad037f21d44} 
+\index{src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}!res@{res}}
+\index{res@{res}!src.occupancy.OccupancyGrid@{src.occupancy.OccupancyGrid}}
+\doxysubsubsection{\texorpdfstring{res}{res}}
+{\footnotesize\ttfamily src.\+occupancy.\+Occupancy\+Grid.\+res}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/epn03/\+Code/1-\/\+Project/\+Lidar\+Based\+Grid\+Mapping/src/\mbox{\hyperlink{occupancy_8py}{occupancy.\+py}}\end{DoxyCompactItemize}

@@ -1,6 +1,4 @@
-datasets:
-  odom: 'data/input/odom.csv'
-  flaser: 'data/input/flaser.csv'
+dataset: 'data/input/orebro.gfs.log'
 
 prob_occ: 0.75
 

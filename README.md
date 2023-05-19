@@ -9,24 +9,28 @@ The application reads the input datasets from the `config.yaml` file, processes 
 ## Repository Structure
 
 ```bash
-├── LICENSE                  # Contains the license agreement 
-├── README.md                # The top-level description and general information
-├── config                   # Configuration files directory
-│   └── config.yaml          # Main configuration file
-├── data                     # Data files directory
-│   ├── input                # Input data files
-│   │   ├── flaser.csv       # Flaser data input file
-│   │   └── odom.csv         # Odom data input file
-│   └── output               # Output data/files generated
-│       └── occupancy_plot.pdf   # Generated occupancy plot
-│       └── output.gif       # Generated Gif
-├── docs                     # Documentation files
-├── setup.py                 # Build script for setuptools. Helps in packaging and distribution.
-└── src                      # Source code directory
-    ├── __init__.py          # Makes the directory a package
-    ├── config_parser.py     # Source file to parse the configuration file
-    ├── main.py              # Main application source file
-    └── occupancy.py         # Source file for occupancy grid functionalities
+.
+├── LICENSE                      # Contains the license agreement 
+├── README.md                    # The top-level description and general information
+├── config                       # Configuration files directory
+│   └── config.yaml              # Main configuration file
+├── data                         # Data files directory
+│   ├── input                    # Input data files
+│   │   ├── orebro.gfs.log       # Data input file
+│   └── output                   # Output data/files generated
+│       ├── occupancy_plot.pdf   # Generated occupancy plot
+│       └── output.gif           # Generated Gif
+├── docs                         # Documentation files
+├── setup.py                     # Build script for setuptools. Helps in packaging and distribution.
+└── src                          # Source code directory
+    ├── __init__.py              # Makes the directory a package
+    ├── config_parser.py         # Source file to parse the configuration file
+    ├── data_processing.py       # Handles data processing operations
+    ├── main.py                  # Main application source file
+    ├── map_operations.py        # Handles map related operations
+    ├── occupancy.py             # Source file for occupancy grid functionalities
+    └── plot_operations.py       # Handles plot operations
+
 ```
 
 ## Setup and Running
@@ -54,15 +58,14 @@ This will process the datasets specified in the config.yaml file and generate th
 ## Configuring the Script
 You can modify the config.yaml file to change the behavior of the script. The script can be configured with these properties:
 
-* datasets: Paths to the odom and flaser datasets.
+* datasets: Paths to the datasets.
 * prob_occ: The initial probability for each cell in the occupancy grid.
 * laser: Laser configuration including max_range and degrees.
 * map: Map configuration including size and resolution.
 * plot: Plot configuration including animation_speed, lidar_color, lidar_alpha, robot_color and plot_output_filename.
 
 
-## Dataset
-### Dataset Source
+## Dataset source
 
 The dataset used in this project originates from the [Robotics 2D-Laser Datasets](http://www2.informatik.uni-freiburg.de/~stachnis/datasets.html) provided by the University of Freiburg. This project specifically uses the 'Orebro' dataset.
 

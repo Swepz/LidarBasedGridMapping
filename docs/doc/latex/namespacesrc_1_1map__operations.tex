@@ -1,0 +1,38 @@
+\doxysection{src.\+map\+\_\+operations Namespace Reference}
+\hypertarget{namespacesrc_1_1map__operations}{}\label{namespacesrc_1_1map__operations}\index{src.map\_operations@{src.map\_operations}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacesrc_1_1map__operations_afca64172d679887a18876ddd1056e488}{initialise\+\_\+map}} (config, odometry)
+\item 
+\mbox{\hyperlink{namespacesrc_1_1map__operations_a08c660fd1535627dcbf988d5e1a54e83}{process\+\_\+odometry\+\_\+and\+\_\+laser\+\_\+data}} (config, odometry, laser, map)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacesrc_1_1map__operations_afca64172d679887a18876ddd1056e488}\label{namespacesrc_1_1map__operations_afca64172d679887a18876ddd1056e488} 
+\index{src.map\_operations@{src.map\_operations}!initialise\_map@{initialise\_map}}
+\index{initialise\_map@{initialise\_map}!src.map\_operations@{src.map\_operations}}
+\doxysubsubsection{\texorpdfstring{initialise\_map()}{initialise\_map()}}
+{\footnotesize\ttfamily src.\+map\+\_\+operations.\+initialise\+\_\+map (\begin{DoxyParamCaption}\item[{}]{config,  }\item[{}]{odometry }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialises the map based on the given configuration and odometry data.
+
+:param config: The configuration dictionary.
+:param odometry: The odometry data array.
+:return: An initialised OccupancyGrid object.
+\end{DoxyVerb}
+ \Hypertarget{namespacesrc_1_1map__operations_a08c660fd1535627dcbf988d5e1a54e83}\label{namespacesrc_1_1map__operations_a08c660fd1535627dcbf988d5e1a54e83} 
+\index{src.map\_operations@{src.map\_operations}!process\_odometry\_and\_laser\_data@{process\_odometry\_and\_laser\_data}}
+\index{process\_odometry\_and\_laser\_data@{process\_odometry\_and\_laser\_data}!src.map\_operations@{src.map\_operations}}
+\doxysubsubsection{\texorpdfstring{process\_odometry\_and\_laser\_data()}{process\_odometry\_and\_laser\_data()}}
+{\footnotesize\ttfamily src.\+map\+\_\+operations.\+process\+\_\+odometry\+\_\+and\+\_\+laser\+\_\+data (\begin{DoxyParamCaption}\item[{}]{config,  }\item[{}]{odometry,  }\item[{}]{laser,  }\item[{}]{map }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Processes odometry and laser data and updates the map.
+
+:param config: The configuration directory.
+:param odometry: The odometry data array.
+:param laser: The laser data array.
+:param map: The OccupancyGrid object to be updated.
+\end{DoxyVerb}
+ 
