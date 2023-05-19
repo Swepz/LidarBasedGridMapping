@@ -1,11 +1,15 @@
 import logging
+from config_parser import load_config
+from data_processing import fetch_data_from_dataset
+from map_operations import initialise_map
+from map_operations import process_odometry_and_laser_data
 from pathlib import Path
-from src.config_parser import load_config
-from src.data_processing import fetch_data_from_dataset
-from src.map_operations import initialise_map
-from src.map_operations import process_odometry_and_laser_data
 
-CONFIG_FILENAME = "config/config.yaml"
+# Get the directory of the current script
+parent_dir = Path(__file__).resolve().parent.parent
+
+# Construct the path to the config file
+CONFIG_FILENAME = parent_dir / "config" / "config.yaml"
 
 def main():
     # Ensure the configuration file exists
@@ -16,7 +20,8 @@ def main():
 
     # Load configuration and dataset
     config = load_config(config_path)
-    laser, odometry = fetch_data_from_dataset(config["dataset"])
+    dataset_path = parent_dir / config["dataset"]
+    laser, odometry = fetch_data_from_dataset(dataset_path)
     
     # Initialise the map and process the data
     map = initialise_map(config, odometry)

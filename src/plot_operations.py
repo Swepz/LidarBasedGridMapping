@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.animation import FuncAnimation
 import numpy as np
+from pathlib import Path
 """
 This module is responsible for operations related to plotting.
 This includes generating a plot based on the OccupancyGrid map and data.
@@ -17,6 +18,8 @@ def plot_map(config, odometry, laser, map, i):
     :param map: The OccupancyGrid object to be plotted.
     :param i: The current index in the odometry and laser data arrays.
     """
+    parent_dir = Path(__file__).resolve().parent.parent
+    output_name = parent_dir / config['plot']['plot_output_filename']
     resolution = config['map']['resolution']
     plt.clf()  # Clear the current figure.
 
@@ -43,4 +46,5 @@ def plot_map(config, odometry, laser, map, i):
     plt.pause(config['plot']['liveplot_speed'])  # Pause to update the figure.
 
     if i == len(odometry) - 1:  # If it is the last iteration, save the figure.
-        plt.savefig(config['plot']['plot_output_filename'])  # Save the figure to a file.
+        print("Saving the figure to path {}".format(output_name))
+        plt.savefig(output_name)  # Save the figure to a file.

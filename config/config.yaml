@@ -4,10 +4,9 @@ prob_occ: 0.75
 
 laser:
   max_range: 5
-  degrees: 181
 
 map:
-  size: [80, 80]
+  size: [100, 100]
   resolution: 15
 
 plot:

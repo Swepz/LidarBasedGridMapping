@@ -50,7 +50,8 @@ pip install .
 ```
 4. To run the main script:
 ```bash
-python -m src.main
+cd src
+python3 main.py
 ```
 
 This will process the datasets specified in the config.yaml file and generate the occupancy grid map plot occupancy_plot.pdf.
