@@ -10,9 +10,9 @@ class OccupancyGrid:
         :param map_size: The size of the map.
         """
         self.config = config
-        self.res = self.config["map"]["resolution"]
-        self.prob = self.config["map"]["prob_occ"]
-        self.log_prob_map = np.zeros([map_size[0] * self.res + 1, map_size[1] * self.res + 1], dtype=float)
+        self.resolution = self.config["map"]["resolution"]
+        self.probability = self.config["map"]["prob_occ"]
+        self.log_prob_map = np.zeros([map_size[0] * self.resolution + 1, map_size[1] * self.resolution + 1], dtype=float)
 
     def fetch_prob_map(self):
         """
@@ -45,7 +45,7 @@ class OccupancyGrid:
         :param occupied: A boolean indicating if the cell is occupied (True) or free (False).
         :return: Log odds of the cell being occupied or free.
         """
-        A, B = self.prob, 1 - self.prob
+        A, B = self.probability, 1 - self.probability
         return np.log(A / B) if not occupied else np.log(B / A)
 
     def bresenham_line(self, x0, y0, x1, y1):
@@ -129,10 +129,10 @@ class OccupancyGrid:
                 laser must have passed through to reach the occupied cells, thus indicating they are free.
         """
         # Round the laser readings to get the occupied cells
-        occ = np.round(np.array(self.laser_sweep(xi, zi)) * self.res).astype(int)
+        occ = np.round(np.array(self.laser_sweep(xi, zi)) * self.resolution).astype(int)
 
         # Round the robot pose to get the current cell
-        xi = np.round(xi * self.res).astype(int)
+        xi = np.round(xi * self.resolution).astype(int)
 
         # Initialize a list of free cells
         free = np.array([[xi[0], xi[0]], [xi[1], xi[1]]])

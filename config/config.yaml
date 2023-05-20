@@ -12,7 +12,7 @@ map:
   log_odds_max: 10    # Max value for log odds clipping
 
 plot:
-  liveplot_speed: 0.000001 # Live plot speed
+  liveplot_speed: 0.001 # Live plot speed
   lidar_alpha: 0.4 # Transperancy
   lidar_color: 'r' # Red
   robot_color: 'g' # Green
