@@ -57,14 +57,7 @@ python3 main.py
 This will process the datasets specified in the config.yaml file and generate the occupancy grid map plot occupancy_plot.pdf.
 
 ## Configuring the Script
-You can modify the config.yaml file to change the behavior of the script. The script can be configured with these properties:
-
-* datasets: Paths to the datasets.
-* prob_occ: The initial probability for each cell in the occupancy grid.
-* laser: Laser configuration including max_range and degrees.
-* map: Map configuration including size and resolution.
-* plot: Plot configuration including animation_speed, lidar_color, lidar_alpha, robot_color and plot_output_filename.
-
+You can modify the config.yaml file to change the behavior of the script. 
 
 ## Dataset source
 

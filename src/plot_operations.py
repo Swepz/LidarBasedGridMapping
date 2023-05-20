@@ -23,23 +23,28 @@ def plot_map(config, odometry, laser, map, i):
     resolution = config['map']['resolution']
     plt.clf()  # Clear the current figure.
 
-    # Create a wedge (half-circle) representing the LIDAR's field of view
-    pos = odometry[i] * resolution # Compute the robot's position with the resolution taken into account.
-    theta = odometry[i, 2]  # Robot's heading angle
+    # Set plot limits based on the map size
+    plt.xlim(0, config['map']['size'][0] * resolution)
+    plt.ylim(0, config['map']['size'][1] * resolution)
 
-    # Adjust the radius of the wedge according to the resolution
-    wedge_radius = config["laser"]["max_range"] * resolution
+    if i != len(odometry) - 1:  # If it's not the last iteration, plot the robot and Lidar.
+        # Create a wedge (half-circle) representing the LIDAR's field of view
+        pos = odometry[i] * resolution # Compute the robot's position with the resolution taken into account.
+        theta = odometry[i, 2]  # Robot's heading angle
 
-    lidar_fov = patches.Wedge(center=(pos[0], pos[1]), r=wedge_radius, 
-                              theta1=np.degrees(theta - np.pi/2), 
-                              theta2=np.degrees(theta + np.pi/2), 
-                              color=config['plot']['lidar_color'], alpha=config['plot']['lidar_alpha'])  
-    
-    # Create a circle representing the robot.
-    rob = patches.Circle((pos[0], pos[1]), resolution, fc=config['plot']['robot_color'])  
+        # Adjust the radius of the wedge according to the resolution
+        wedge_radius = config["laser"]["max_range"] * resolution
 
-    plt.gca().add_patch(lidar_fov)
-    plt.gca().add_patch(rob)
+        lidar_fov = patches.Wedge(center=(pos[0], pos[1]), r=wedge_radius, 
+                                  theta1=np.degrees(theta - np.pi/2), 
+                                  theta2=np.degrees(theta + np.pi/2), 
+                                  color=config['plot']['lidar_color'], alpha=config['plot']['lidar_alpha'])  
+
+        # Create a circle representing the robot.
+        rob = patches.Circle((pos[0], pos[1]), resolution, fc=config['plot']['robot_color'])  
+
+        plt.gca().add_patch(lidar_fov)
+        plt.gca().add_patch(rob)
 
     # Display the occupancy grid map with a grayscale colormap, origin at the lower left corner.
     plt.imshow(map.fetch_prob_map().T, cmap='gray', origin='lower')

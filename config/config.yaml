@@ -1,17 +1,18 @@
-dataset: 'data/input/orebro.gfs.log'
-
-prob_occ: 0.75
-
+dataset: 
+  dir: 'data/input/'
+  map1: 'orebro.gfs.log'
+  map2: 'fr079-complete.gfs.log'
 laser:
   max_range: 5
-
 map:
   size: [100, 100]
-  resolution: 15
+  resolution: 5
+  prob_occ: 0.75
+  log_odds_min: -10   # Min value for log odds clipping
+  log_odds_max: 10    # Max value for log odds clipping
 
 plot:
-  liveplot_speed: 0.01 # Live plot speed
-  gif_speedup: 1000 
+  liveplot_speed: 0.000001 # Live plot speed
   lidar_alpha: 0.4 # Transperancy
   lidar_color: 'r' # Red
   robot_color: 'g' # Green

@@ -3,10 +3,6 @@ from plot_operations import plot_map
 import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm
-"""
-This module is responsible for operations related to the OccupancyGrid map.
-This includes initializing and updating the map with odometry and laser data.
-"""
 
 def initialise_map(config, odometry):
     """
@@ -16,14 +12,14 @@ def initialise_map(config, odometry):
     :param odometry: The odometry data array.
     :return: An initialised OccupancyGrid object.
     """
-    probability = config["prob_occ"]
+    probability = config["map"]["prob_occ"]
     map_x_size, map_y_size = config['map']['size']  # Map dimensions from configuration
     # Adjust odometry start position to the center of x-axis and 1/3 of y-axis
     odometry[:, 0] += map_x_size / 2
     odometry[:, 1] += map_y_size / 3
     resolution = config['map']['resolution']  # Map resolution multiplier from configuration
     map_size = [map_x_size, map_y_size]
-    return OccupancyGrid(map_size, resolution, config["prob_occ"])
+    return OccupancyGrid(map_size, config)
 
 def process_odometry_and_laser_data(config, odometry, laser, map):
     """

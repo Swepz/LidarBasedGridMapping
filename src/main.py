@@ -20,9 +20,9 @@ def main():
 
     # Load configuration and dataset
     config = load_config(config_path)
-    dataset_path = parent_dir / config["dataset"]
+    dataset_path = parent_dir / config["dataset"]["dir"] / config["dataset"]["map1"]
     laser, odometry = fetch_data_from_dataset(dataset_path)
-    
+
     # Initialise the map and process the data
     map = initialise_map(config, odometry)
     process_odometry_and_laser_data(config, odometry, laser, map)
